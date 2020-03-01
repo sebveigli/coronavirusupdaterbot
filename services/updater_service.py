@@ -204,11 +204,11 @@ class UpdaterService:
                 cases_before = "0"
                 deaths_before = "0"
             else:
-                cases_before = location_data.iloc[0]["Cases"]
-                deaths_before = location_data.iloc[0]["Deaths"]
+                cases_before = location_data.iloc[0]["Cases"].replace(",", "")
+                deaths_before = location_data.iloc[0]["Deaths"].replace(",", "")
 
-            cases_after = location_data.iloc[-1]["Cases"]
-            deaths_after = location_data.iloc[-1]["Deaths"]
+            cases_after = location_data.iloc[-1]["Cases"].replace(",", "")
+            deaths_after = location_data.iloc[-1]["Deaths"].replace(",", "")
 
             notes = location_data.iloc[-1]["Notes"]
 

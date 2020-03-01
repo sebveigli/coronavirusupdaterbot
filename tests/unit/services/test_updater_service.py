@@ -78,6 +78,30 @@ def test_collecting_differences(table_updater_service, stub_bno_dataframe):
     pd.testing.assert_frame_equal(expected_result, result)
 
 
+def test_collecting_differences_with_thousands_seperated_by_commas(table_updater_service, stub_bno_dataframe):
+    columns = ["Location", "Cases", "Deaths", "Notes"]
+    new_data = [
+        ["Australia", "3,000", "1", "1 serious"],
+        ["Sweden", "5", "3", ""],
+        ["Austria", "1", "0", ""],
+    ]
+
+    data_after = pd.DataFrame(new_data, columns=columns)
+    joined_data = stub_bno_dataframe.append(data_after)
+    result = table_updater_service._collect_differences(joined_data)
+
+    expected_result = pd.DataFrame(
+        [
+            ["Australia", "2", "3000", "1", "1", "1 serious"],
+            ["Sweden", "5", "5", "2", "3", ""],
+            ["Austria", "0", "1", "0", "0", ""],
+        ],
+        columns=["location", "cases_before", "cases_after", "deaths_before", "deaths_after", "notes",],
+    )
+
+    pd.testing.assert_frame_equal(expected_result, result)
+
+
 def test_text_update_cases_up_single(text_updater_service, stub_bno_dataframe):
     columns = ["Location", "Cases", "Deaths", "Notes"]
     new_data = [
