@@ -3,6 +3,7 @@ import logging
 import pandas as pd
 
 from gateways.bno_news_gateway import BnoNewsGatewayError
+from utils.data import remove_non_integers_from_string
 
 from texttable import Texttable
 
@@ -204,11 +205,11 @@ class UpdaterService:
                 cases_before = "0"
                 deaths_before = "0"
             else:
-                cases_before = location_data.iloc[0]["Cases"].replace(",", "")
-                deaths_before = location_data.iloc[0]["Deaths"].replace(",", "")
+                cases_before = remove_non_integers_from_string(location_data.iloc[0]["Cases"])
+                deaths_before = remove_non_integers_from_string(location_data.iloc[0]["Deaths"])
 
-            cases_after = location_data.iloc[-1]["Cases"].replace(",", "")
-            deaths_after = location_data.iloc[-1]["Deaths"].replace(",", "")
+            cases_after = remove_non_integers_from_string(location_data.iloc[-1]["Cases"])
+            deaths_after = remove_non_integers_from_string(location_data.iloc[-1]["Deaths"])
 
             notes = location_data.iloc[-1]["Notes"]
 
