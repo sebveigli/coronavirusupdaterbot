@@ -105,7 +105,8 @@ class UpdaterService:
             else:
                 deaths = deaths_after
 
-            new_data.append([location, cases, deaths, notes])
+            # TODO: Fix the new columns that were added in with issue #3
+            new_data.append([location, cases, deaths, "0", "0", "0", notes])
 
         table.add_rows(new_data)
 
@@ -128,8 +129,8 @@ class UpdaterService:
 
     def _make_text_update(self, data):
         TEXT_TEMPLATE = {
-            "cases_up": "{count} new case(s) identified in **{location}**, total case(s) now are {current}{notes}",
-            "cases_down": "{count} incorrectly identified case(s) in **{location}**, total case(s) now are {current}{notes}",
+            "cases_up": "{count} new case(s) identified in **{location}**, total case(s) now are {current}",
+            "cases_down": "{count} incorrectly identified case(s) in **{location}**, total case(s) now are {current}",
             "deaths_up": "{count} new death(s) recorded in **{location}**, total death(s) now are {current}",
             "deaths_down": "{count} incorrectly identified death(s) in **{location}**, total death(s) now are {current}",
         }
@@ -146,18 +147,11 @@ class UpdaterService:
 
             if cases_diff > 0:
                 message_store.append(
-                    TEXT_TEMPLATE["cases_up"].format(
-                        count=cases_diff, location=location, current=cases_after, notes=f" ({notes})" if notes else "",
-                    )
+                    TEXT_TEMPLATE["cases_up"].format(count=cases_diff, location=location, current=cases_after,)
                 ),
             elif cases_diff < 0:
                 message_store.append(
-                    TEXT_TEMPLATE["cases_down"].format(
-                        count=abs(cases_diff),
-                        location=location,
-                        current=cases_after,
-                        notes=f" ({notes})" if notes else "",
-                    )
+                    TEXT_TEMPLATE["cases_down"].format(count=abs(cases_diff), location=location, current=cases_after,)
                 ),
 
             if deaths_diff > 0:
