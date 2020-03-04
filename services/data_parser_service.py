@@ -16,23 +16,42 @@ class DataParserService:
         Returns:
         DataFrame
         """
-        COLUMNS = ["Location", "Cases", "Deaths", "Notes"]
+        COLUMNS = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
 
         soup = BeautifulSoup(raw_data, features="html.parser")
 
+        all_tr_rows = soup.find("tbody").findAll("tr")
+
+        china_data = []
+        international_data = []
+
+        china_active = False
+        international_active = False
+
+        for idx, tr_row in enumerate(all_tr_rows):
+            all_tds = tr_row.findAll("td")
+
+            if len(all_tds) != 7:
+                continue
+            elif all_tds[0].get_text() == "MAINLAND CHINA":
+                china_active = True
+                continue
+            elif all_tds[0].get_text() == "CHINA TOTAL":
+                china_active = False
+                continue
+            elif all_tds[0].get_text() == "OTHER PLACES":
+                international_active = True
+                continue
+            elif all_tds[0].get_text() == "TOTAL":
+                international_active = False
+                continue
+
+            if china_active:
+                china_data.append([x.get_text() for x in all_tds])
+            elif international_active:
+                international_data.append([x.get_text() for x in all_tds])
+
         if region == "international":
-            _class = "wp-block-table is-style-regular"
+            return pd.DataFrame(international_data, columns=COLUMNS)
         else:
-            _class = "wp-block-table aligncenter is-style-stripes"
-
-        all_data = soup.find("table", class_=_class).find("tbody").findAll("tr")
-
-        data_header = [data.get_text() for data in all_data[0].findAll("td")][:-1]
-        data_values = all_data[1:-1]
-
-        parsed_data = []
-
-        for d in data_values:
-            parsed_data.append([data.get_text() for data in d.findAll("td")][:-1])
-
-        return pd.DataFrame(parsed_data, columns=COLUMNS)
+            return pd.DataFrame(china_data, columns=COLUMNS)
