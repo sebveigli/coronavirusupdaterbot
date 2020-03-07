@@ -15,7 +15,15 @@ class AsyncMock(MagicMock):
 
 @pytest.fixture(scope="function")
 def stub_bno_dataframe():
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     data = [
         ["Australia", "2", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -55,7 +63,15 @@ def text_updater_service():
 
 
 def test_collecting_differences(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "3", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "3", "0", "0", "0", ""],
@@ -79,7 +95,15 @@ def test_collecting_differences(table_updater_service, stub_bno_dataframe):
 
 
 def test_collecting_differences_with_thousands_seperated_by_commas(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "3,000", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "3", "0", "0", "0", ""],
@@ -103,7 +127,15 @@ def test_collecting_differences_with_thousands_seperated_by_commas(table_updater
 
 
 def test_text_update_cases_up_single(text_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "3", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -120,7 +152,15 @@ def test_text_update_cases_up_single(text_updater_service, stub_bno_dataframe):
 
 
 def test_text_update_cases_up_multi(text_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "3", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "6", "2", "0", "0", "0", ""],
@@ -139,7 +179,15 @@ def test_text_update_cases_up_multi(text_updater_service, stub_bno_dataframe):
 
 
 def test_text_update_cases_down_single(text_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "1", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -156,7 +204,15 @@ def test_text_update_cases_down_single(text_updater_service, stub_bno_dataframe)
 
 
 def test_text_update_cases_down_multi(text_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "1", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "4", "2", "0", "0", "0", ""],
@@ -175,7 +231,15 @@ def test_text_update_cases_down_multi(text_updater_service, stub_bno_dataframe):
 
 
 def test_text_update_deaths_up_single(text_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "2", "2", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -192,7 +256,15 @@ def test_text_update_deaths_up_single(text_updater_service, stub_bno_dataframe):
 
 
 def test_text_update_deaths_up_multi(text_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "2", "2", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "3", "0", "0", "0", ""],
@@ -211,7 +283,15 @@ def test_text_update_deaths_up_multi(text_updater_service, stub_bno_dataframe):
 
 
 def test_text_update_deaths_down_single(text_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "2", "0", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -228,7 +308,15 @@ def test_text_update_deaths_down_single(text_updater_service, stub_bno_dataframe
 
 
 def test_text_update_deaths_down_multi(text_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "2", "0", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "1", "0", "0", "0", ""],
@@ -247,7 +335,15 @@ def test_text_update_deaths_down_multi(text_updater_service, stub_bno_dataframe)
 
 
 def test_table_update_cases_up_single(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "3", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -276,7 +372,15 @@ def test_table_update_cases_up_single(table_updater_service, stub_bno_dataframe)
 
 
 def test_table_update_cases_up_multiple(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "3", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "6", "2", "0", "0", "0", ""],
@@ -305,7 +409,15 @@ def test_table_update_cases_up_multiple(table_updater_service, stub_bno_datafram
 
 
 def test_table_update_cases_down_single(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "1", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -334,7 +446,15 @@ def test_table_update_cases_down_single(table_updater_service, stub_bno_datafram
 
 
 def test_table_update_cases_down_multi(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "1", "1", "0", "0", "0", "1 serious"],
         ["Sweden", "4", "2", "0", "0", "0", ""],
@@ -363,7 +483,15 @@ def test_table_update_cases_down_multi(table_updater_service, stub_bno_dataframe
 
 
 def test_table_update_deaths_up_single(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "2", "2", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -392,7 +520,15 @@ def test_table_update_deaths_up_single(table_updater_service, stub_bno_dataframe
 
 
 def test_table_update_deaths_up_multi(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "2", "2", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "3", "0", "0", "0", ""],
@@ -421,7 +557,15 @@ def test_table_update_deaths_up_multi(table_updater_service, stub_bno_dataframe)
 
 
 def test_table_update_deaths_down_single(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "2", "0", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "2", "0", "0", "0", ""],
@@ -450,7 +594,15 @@ def test_table_update_deaths_down_single(table_updater_service, stub_bno_datafra
 
 
 def test_table_update_deaths_down_multi(table_updater_service, stub_bno_dataframe):
-    columns = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+    columns = [
+        "Location",
+        "Cases",
+        "Deaths",
+        "Serious",
+        "Critical",
+        "Recovered",
+        "Notes",
+    ]
     new_data = [
         ["Australia", "2", "0", "0", "0", "0", "1 serious"],
         ["Sweden", "5", "1", "0", "0", "0", ""],

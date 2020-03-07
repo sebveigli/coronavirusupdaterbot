@@ -15,7 +15,15 @@ class DataParserService:
         Returns:
         DataFrame
         """
-        COLUMNS = ["Location", "Cases", "Deaths", "Serious", "Critical", "Recovered", "Notes"]
+        COLUMNS = [
+            "Location",
+            "Cases",
+            "Deaths",
+            "Serious",
+            "Critical",
+            "Recovered",
+            "Source",
+        ]
 
         soup = BeautifulSoup(raw_data, features="html.parser")
 
@@ -37,6 +45,16 @@ class DataParserService:
                 continue
 
             if data_active:
-                data.append([x.get_text() for x in all_tds[:len(COLUMNS)]])
+                data_row = [x.get_text() for x in all_tds[: len(COLUMNS) - 1]]
+
+                source_data = all_tds[len(COLUMNS) - 1].find("a")
+
+                if source_data:
+                    source = source_data["href"]
+                else:
+                    source = ""
+
+                data_row.append(source)
+                data.append(data_row)
 
         return pd.DataFrame(data, columns=COLUMNS)

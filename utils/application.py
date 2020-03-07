@@ -45,8 +45,8 @@ def parse_args():
         "-o",
         "--output",
         required=False,
-        default="table",
-        choices=["table", "text"],
+        default="embed",
+        choices=["table", "text", "embed"],
         help="How the updates should be sent to Discord Channels (in table format, or free text sentences)",
     )
 

@@ -10,9 +10,7 @@ if __name__ == "__main__":
 
     utils.application.init_logger(args.severity)
 
-    updater_service = UpdaterService(
-        BnoNewsGateway(), DataParserService(), args.frequency, args.channel, args.output,
-    )
+    updater_service = UpdaterService(BnoNewsGateway(), DataParserService(), args.frequency, args.channel, args.output,)
 
     discord = DiscordClient(updater_service)
     discord.run(args.token)
