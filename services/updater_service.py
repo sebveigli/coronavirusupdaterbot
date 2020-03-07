@@ -10,11 +10,10 @@ from texttable import Texttable
 
 class UpdaterService:
     def __init__(
-        self, bno_news_gateway, data_parser_service, region, update_interval, discord_channel_id, output, logger=None,
+        self, bno_news_gateway, data_parser_service, update_interval, discord_channel_id, output, logger=None,
     ):
         self.bno_news_gateway = bno_news_gateway
         self.data_parser_service = data_parser_service
-        self.region = region
         self.update_interval = update_interval
         self.discord_channel_id = discord_channel_id
         self.output = output
@@ -37,15 +36,7 @@ class UpdaterService:
 
             self.logger.debug("Data fetched successfully. Parsing...")
 
-            if self.region in ["china", "international"]:
-                data = self.data_parser_service.create_dataframe_from_bno_data(latest_data, self.region)
-            else:
-                china_data = self.data_parser_service.create_dataframe_from_bno_data(latest_data, "china")
-                international_data = self.data_parser_service.create_dataframe_from_bno_data(
-                    latest_data, "international"
-                )
-
-                data = china_data.append(international_data, ignore_index=True)
+            data = self.data_parser_service.create_dataframe_from_bno_data(latest_data)
 
             self.logger.debug("Data parsed successfully")
 

@@ -22,7 +22,6 @@ Usage: python app.py [flags]
   -t/--token: Your bot's Discord token (found at https://discordapp.com/developers/applications/)
   -c/--channel: The channel ID that the bot should report updates to
   -f/--frequency: How often the bot should scrape BNO for new updates
-  -r/--region {all, china, international}: Which data should be parsed from BNO
   -o/--output {text, table}: Whether the output to Discord should be in text (sentences) or table format
   -s/--severity {debug, info, warning, error, critical}: Logging severity to the standard output (default: info)
   ```

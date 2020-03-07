@@ -33,15 +33,6 @@ def parse_args():
     )
 
     parser.add_argument(
-        "-r",
-        "--region",
-        required=False,
-        default="all",
-        choices=["all", "china", "international"],
-        help="Choose which region should be checked, refreshed and updated in Discord",
-    )
-
-    parser.add_argument(
         "-s",
         "--severity",
         required=False,
