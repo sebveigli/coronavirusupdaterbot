@@ -47,12 +47,12 @@ class DataParserService:
             if data_active:
                 data_row = [x.get_text() for x in all_tds[: len(COLUMNS) - 1]]
 
-                source_data = all_tds[len(COLUMNS) - 1].find("a")
+                # source_data = all_tds[len(COLUMNS) - 1].find("a")
 
-                if source_data:
-                    source = source_data["href"]
-                else:
-                    source = ""
+                # if source_data:
+                #     source = source_data["href"]
+                # else:
+                source = ""
 
                 data_row.append(source)
                 data.append(data_row)
